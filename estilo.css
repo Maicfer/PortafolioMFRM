@@ -1,0 +1,104 @@
+/*
+    Este archivo CSS es para estilos personalizados que no se manejan directamente con Tailwind CSS.
+    La mayoría de los estilos de diseño y responsividad se gestionan directamente en el HTML con clases de Tailwind.
+*/
+
+/* Puedes añadir aquí estilos globales o para elementos específicos que necesiten un toque extra */
+
+/* Ejemplo: Estilos para el scrollbar (opcional, para navegadores que lo soportan) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2d3748; /* gray-800 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a5568; /* gray-600 */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4299e1; /* blue-500 */
+}
+
+/* Estilos para el foco en inputs y textareas para accesibilidad */
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* blue-500 con transparencia */
+}
+
+/* Animación para el texto del título en la sección de inicio */
+@keyframes pulseText {
+    0% {
+        text-shadow: 0 0 5px rgba(66, 153, 225, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(66, 153, 225, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(66, 153, 225, 0.4);
+    }
+}
+
+.animate-pulse-text {
+    animation: pulseText 2s infinite alternate;
+}
+
+/* Estilos para el fondo de la sección de inicio con un sutil degradado */
+#inicio {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+#inicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(26, 32, 44, 0.7), rgba(45, 55, 72, 0.7));
+    z-index: 1;
+}
+
+#inicio .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Estilos para el menú lateral (sidebar) */
+.sidebar {
+    transform: translateX(-100%); /* Oculto por defecto */
+    transition: transform 0.3s ease-in-out;
+    visibility: hidden; /* Asegura que el sidebar esté inicialmente oculto */
+}
+
+.sidebar.open {
+    transform: translateX(0); /* Visible */
+    visibility: visible; /* Se hace visible al abrir */
+}
+
+/* Estilos para los enlaces del sidebar con efecto de color al pasar el ratón */
+.sidebar nav ul li a {
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar nav ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(66, 153, 225, 0.2), rgba(66, 153, 225, 0.05)); /* Degradado sutil */
+    transition: left 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.sidebar nav ul li a:hover::before {
+    left: 0;
+}
