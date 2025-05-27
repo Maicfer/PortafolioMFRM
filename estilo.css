@@ -29,7 +29,7 @@ input:focus, textarea:focus {
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* blue-500 con transparencia */
 }
 
-/* Animación para el texto del título en la sección de inicio */
+/* Animación para el texto del título en la sección de inicio (mantenido de tu CSS) */
 @keyframes pulseText {
     0% {
         text-shadow: 0 0 5px rgba(66, 153, 225, 0.4);
@@ -46,61 +46,44 @@ input:focus, textarea:focus {
     animation: pulseText 2s infinite alternate;
 }
 
-/* Estilos para el fondo de la sección de inicio con un sutil degradado */
-/* NOTA: Tu background-image se define directamente en el HTML de #inicio */
-/* Este ::before ya no se necesita si el overlay de Tailwind en el HTML lo hace */
-/* Lo comento por ahora para evitar duplicidad o conflictos con el overlay bg-blue-900 opacity-20 */
-/* #inicio {
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-#inicio::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom right, rgba(26, 32, 44, 0.7), rgba(45, 55, 72, 0.7));
-    z-index: 1;
-}
-
-#inicio .container {
-    position: relative;
-    z-index: 2;
-} */
-
-/* Estilos para el menú lateral (sidebar) */
+/* Estilos del menú lateral (sidebar) - AHORA TODO UNIFICADO AQUÍ */
 .sidebar {
-    transform: translateX(-100%); /* Oculto por defecto */
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Mantenemos tu transform y añadimos el de background */
-    visibility: hidden; /* Asegura que el sidebar esté inicialmente oculto */
-    /* Aquí se fusionan los estilos de degradado y blur que te pasé antes con tu estructura */
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(17, 24, 39, 0.98));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    width: 0; /* Oculto por defecto, sin ancho */
+    transform: translateX(-100%); /* Desplazado fuera de la vista */
+    visibility: hidden; /* Asegura que no sea interactivo cuando oculto */
+    
+    /* Propiedades de diseño del sidebar (fusionadas de mis propuestas) */
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(17, 24, 39, 0.98)); /* Degradado oscuro y opacidad */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidad */
+    
+    /* Transiciones para suavizar la apertura/cierre (fusionadas) */
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .sidebar.open {
+    width: 200px; /* ANCHO REDUCIDO para desktop, más elegante */
     transform: translateX(0); /* Visible */
-    visibility: visible; /* Se hace visible al abrir */
+    visibility: visible;
+}
+@media (max-width: 768px) {
+    .sidebar.open {
+        width: 180px; /* ANCHO REDUCIDO para móviles */
+    }
 }
 
-/* Estilos para los enlaces del sidebar con efecto de color al pasar el ratón */
-/* Aquí he fusionado tu efecto de 'left' con mi 'width' para una línea en la parte inferior */
+/* Estilos para los enlaces del sidebar con efecto de color al pasar el ratón (mi propuesta de línea inferior) */
 .sidebar nav ul li a {
     position: relative;
     overflow: hidden;
-    /* Eliminar el ::before original para que el nuevo tome efecto */
+    /* Asegúrate de que no haya padding vertical excesivo que corte la línea, p-2 py-2 es suficiente en HTML */
 }
 
 .sidebar nav ul li a::before {
     content: '';
     position: absolute;
-    bottom: 0; /* Lo puse abajo como te lo propuse para la línea */
-    left: 0; /* Inicia desde la izquierda */
+    bottom: 0;
+    left: 0;
     width: 0; /* Ancho inicial 0 */
     height: 3px; /* Grosor de la línea */
     background-color: #63b3ed; /* Color del degradado */
@@ -119,7 +102,7 @@ input:focus, textarea:focus {
 }
 
 
-/* --- NUEVOS ESTILOS FUSIONADOS --- */
+/* --- ESTILOS DE SECCIONES Y COMPONENTES (ya en tu estilos.css) --- */
 
 /* Estilos de fondo para secciones alternadas */
 .section-bg-dark {
@@ -128,7 +111,7 @@ input:focus, textarea:focus {
     position: relative;
     overflow: hidden;
 }
-/* Patrón de puntos para secciones oscuras - Inyectado como base64 SVG */
+/* Patrón de puntos para secciones oscuras - Inyectado como base64 SVG en HTML */
 .section-bg-dark::before {
     content: '';
     position: absolute;
@@ -136,7 +119,6 @@ input:focus, textarea:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Ajusta el color del patrón (%232d3748 es gray-800, puedes cambiarlo si quieres un tono diferente) */
     background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232d3748" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM2 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM36 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM28 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM14 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z"%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
     background-size: 60px 60px;
     opacity: 0.1;
