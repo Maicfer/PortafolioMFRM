@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Rodríguez - Portafolio Profesional</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"> 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="estilo.css">
-    <style>
+    <link rel="stylesheet" href="estilos.css"> <style>
         body {
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Evita el scroll horizontal */
+            overflow-x: hidden;
+            background-color: #f8fafc; /* bg-gray-50 */
         }
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
         /* Estilos para animaciones sutiles */
         .fade-in {
             animation: fadeIn 1s ease-in-out;
@@ -35,21 +40,29 @@
             box-shadow: 0 0 15px rgba(66, 153, 225, 0.6); /* Azul claro */
         }
 
+        /* Animación de texto de título */
+        .animate-pulse-text {
+            animation: pulseText 2s infinite alternate;
+        }
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 5px rgba(66, 153, 225, 0.4); }
+            100% { text-shadow: 0 0 15px rgba(66, 153, 225, 0.8); }
+        }
+
         /* Estilos específicos para el sidebar */
         .sidebar {
             width: 0;
             transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
-            /* Degradado de fondo y transparencia */
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(17, 24, 39, 0.95)); /* bg-gray-800 con transparencia */
-            backdrop-filter: blur(8px); /* Efecto de desenfoque */
-            -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari */
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(17, 24, 39, 0.98)); /* Ajuste de transparencia */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque más pronunciado */
+            -webkit-backdrop-filter: blur(10px);
         }
         .sidebar.open {
-            width: 280px; /* Ancho del sidebar abierto */
+            width: 280px;
         }
         @media (max-width: 768px) {
             .sidebar.open {
-                width: 250px; /* Ancho en móviles */
+                width: 250px;
             }
         }
 
@@ -61,29 +74,74 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 40; /* Debe estar por debajo del sidebar pero por encima del contenido */
+            background: rgba(0, 0, 0, 0.6); /* Más oscuro */
+            z-index: 40;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
         }
         .overlay.active {
             display: block;
+            opacity: 1;
         }
 
         /* Estilos para las barras de progreso de habilidades */
         .skill-bar-container {
-            background-color: #e2e8f0; /* lighter gray for background */
-            border-radius: 9999px; /* rounded-full */
-            height: 12px; /* h-3 */
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            height: 12px;
             overflow: hidden;
         }
         .skill-bar-fill {
             height: 100%;
-            background: linear-gradient(to right, #4299e1, #63b3ed); /* Degradado azul */
+            background: linear-gradient(to right, #3b82f6, #2563eb); /* Azules más intensos */
             border-radius: 9999px;
             transition: width 1s ease-out;
         }
+        
+        /* Estilos de fondo para secciones alternadas */
+        .section-bg-dark {
+            background-color: #1a202c; /* bg-gray-900 */
+            color: #ffffff; /* text-white */
+            position: relative;
+            overflow: hidden;
+        }
+        .section-bg-dark::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232d3748" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM2 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM36 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM28 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM14 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z"%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); /* Patrón de puntos */
+            background-size: 60px 60px; /* Tamaño del patrón */
+            opacity: 0.1; /* Sutil */
+            z-index: -1;
+        }
+
+        .section-bg-light {
+            background-color: #ffffff; /* bg-white */
+            color: #374151; /* text-gray-700 */
+        }
+        .section-bg-light-alt {
+            background-color: #f3f4f6; /* bg-gray-100 */
+            color: #374151;
+        }
+
+        /* Estilo para los cards de proyectos en fondos oscuros */
+        .project-card {
+            background-color: #ffffff; /* Blanco para destacar */
+            color: #1f2937; /* texto oscuro */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02); /* Pequeño levantamiento y agrandamiento */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
     </style>
 </head>
-<body class="antialiased bg-gray-50 text-gray-900">
+<body class="antialiased text-gray-900">
 
     <div id="overlay" class="overlay"></div>
 
@@ -100,14 +158,15 @@
                 <li><a href="#proyectos" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Proyectos</a></li>
                 <li><a href="#cv" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">CV</a></li>
                 <li><a href="#contacto" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Contacto</a></li>
-                <li><a href="#ubicacion" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Ubicación</a></li> </ul>
+                <li><a href="#ubicacion" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Ubicación</a></li> 
+            </ul>
         </nav>
         <div class="mt-auto pt-8 border-t border-gray-700">
             <p class="text-sm text-gray-400">Conéctate:</p>
             <div class="flex space-x-4 mt-2">
                 <a href="https://github.com/Maicfer" target="_blank" class="text-gray-300 hover:text-blue-400 transition duration-300 text-2xl"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/microdm" target="_blank" class="text-gray-300 hover:text-blue-400 transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
-                </div>
+            </div>
         </div>
     </aside>
 
@@ -116,7 +175,7 @@
     </button>
 
     <main class="relative z-10">
-        <section id="inicio" class="min-h-screen flex items-center justify-center bg-cover bg-center text-center py-16 fade-in relative" style="background-image: url('img/developer1.jpg');">
+        <section id="inicio" class="min-h-screen flex items-center justify-center bg-cover bg-center text-center py-16 fade-in relative" style="background-image: url('./img/developer1.jpg');">
             <div class="absolute inset-0 bg-blue-900 opacity-20"></div> 
             <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-center md:justify-between text-white">
                 <div class="md:w-1/2 text-left md:pr-8 mb-8 md:mb-0">
@@ -139,10 +198,10 @@
             </div>
         </section>
 
-        <section id="sobre-mi" class="py-16 bg-white fade-in">
+        <section id="sobre-mi" class="py-16 section-bg-light fade-in">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold text-blue-600 mb-8">Sobre Mí</h2>
-                <div class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
+                <div class="max-w-3xl mx-auto text-lg leading-relaxed">
                     <p class="mb-4">
                         Soy un Analista de Sistemas con un enfoque en protección y escalabilidad tecnológica, liderazgo de equipos y soluciones innovadoras. Mi objetivo es transformar ideas complejas en soluciones digitales intuitivas y eficientes, siempre buscando aprender y aplicar las últimas tendencias.
                     </p>
@@ -153,13 +212,13 @@
             </div>
         </section>
 
-        <section id="proyectos" class="py-16 bg-gray-900 fade-in text-white">
-            <div class="container mx-auto px-4 text-center">
+        <section id="proyectos" class="py-16 section-bg-dark fade-in">
+            <div class="container mx-auto px-4 text-center relative z-10">
                 <h2 class="text-4xl font-bold text-blue-400 mb-12">Mis Proyectos</h2>
                 <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg p-6 scale-up flex flex-col items-center text-center">
+                    <div class="project-card flex flex-col items-center text-center p-6">
                         <img src="img/logo-temporal.png" alt="Proyecto de Desarrollo Fullstack" class="rounded-md mb-4 w-full h-48 object-cover">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Desarrollo Fullstack: Portafolio y Gestor de Tareas</h3>
+                        <h3 class="text-2xl font-semibold mb-2">Desarrollo Fullstack: Portafolio y Gestor de Tareas</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
                             Construcción de este portafolio dinámico con HTML, Tailwind CSS y JavaScript, junto a una aplicación de gestión de tareas con Python (Django/React) y base de datos.
                         </p>
@@ -170,18 +229,18 @@
                             </a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 scale-up flex flex-col items-center text-center">
+                    <div class="project-card flex flex-col items-center text-center p-6">
                         <img src="img/IMG-20240103-WA0051.jpg" alt="Infraestructura TI" class="rounded-md mb-4 w-full h-48 object-cover">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Gestión y Optimización de Infraestructura TI</h3>
+                        <h3 class="text-2xl font-semibold mb-2">Gestión y Optimización de Infraestructura TI</h3>
                         <p class="text-gray-700 mb-4 flex-grow">Proyectos de implementación de seguridad perimetral y administración de redes, CCTV, APs.</p>
                         <div class="mt-auto flex justify-center space-x-4 w-full">
                             <a href="#" target="_blank" class="text-blue-600 hover:underline flex items-center">Ver Detalles <i class="fas fa-external-link-alt ml-1"></i></a>
                             <a href="#" target="_blank" class="text-blue-600 hover:underline flex items-center">Caso de Estudio <i class="fas fa-file-alt ml-1"></i></a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 scale-up flex flex-col items-center text-center">
+                    <div class="project-card flex flex-col items-center text-center p-6">
                         <img src="img/logo.png" alt="Ciberseguridad" class="rounded-md mb-4 w-full h-48 object-cover">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Fortalecimiento de la Ciberseguridad / App de Viajes</h3>
+                        <h3 class="text-2xl font-semibold mb-2">Fortalecimiento de la Ciberseguridad / App de Viajes</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
                             Mejoras en gestión de antivirus y copias de seguridad, mejorando la integridad de datos en un 25%.
                             **Nota:** La demo en vivo de la aplicación de viajes no está disponible debido a limitaciones de base de datos en el entorno de hosting gratuito. El código fuente completo está disponible.
@@ -196,7 +255,7 @@
             </div>
         </section>
 
-        <section id="cv" class="py-16 bg-white fade-in">
+        <section id="cv" class="py-16 section-bg-light fade-in">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold text-blue-600 mb-8">Mi Currículum Vitae</h2>
                 <div class="max-w-4xl mx-auto bg-gray-100 rounded-lg shadow-lg p-8">
@@ -295,19 +354,19 @@
                                 <h4 class="text-xl font-bold text-blue-600 mb-2">Certificaciones:</h4>
                                 <ul class="list-disc list-inside text-gray-700 space-y-1">
                                     <li>Certificado Profesional De Ing. En IA de IBM | IBM (En curso).</li>
-                                    <li>Insignia IBM Agile Explorer | IBM.<a href="https://www.credly.com/badges/6b7e502b-4cf7-48ba-8ff9-bab82d204c2a/public_url" target="_blank" class="text-blue-600 hover:underline flex items-center">Ver credencial <i class="fas fa-external-link-alt ml-1"></i></a></li> 
-                                    <li>Bootcamp Fullstack Python | Enyoi (Certificado).</li>
+                                    <li>Insignia IBM Agile Explorer | IBM: <a href="https://www.credly.com/badges/6b7e502b-4cf7-48ba-8ff9-bab82d204c2a/public_url" target="_blank" class="text-blue-600 hover:underline inline-flex items-center">Ver credencial <i class="fas fa-award ml-1"></i></a>.</li>
+                                    <li>Bootcamp Fullstack Python | Enjoy (Certificado en proceso).</li>
                                     <li>Gestión de Proyectos PMP | Univ. de los Andes (Certificado).</li>
                                 </ul>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contacto" class="py-16 bg-gray-900 fade-in text-white">
-            <div class="container mx-auto px-4 text-center">
+        <section id="contacto" class="py-16 section-bg-dark fade-in">
+            <div class="container mx-auto px-4 text-center relative z-10">
                 <h2 class="text-4xl font-bold text-blue-400 mb-8">Ponte en Contacto Ahora Mismo</h2>
                 <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
                     ¿Tienes un proyecto en mente o quieres saludar? ¡No dudes en contactarme! Estoy disponible para nuevas oportunidades.
@@ -346,10 +405,10 @@
             </div>
         </section>
 
-        <section id="ubicacion" class="py-16 bg-white fade-in">
+        <section id="ubicacion" class="py-16 section-bg-light-alt fade-in">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-4xl font-bold text-blue-600 mb-8">Mi Ubicación</h2>
-                <div class="max-w-2xl mx-auto text-lg text-gray-700 leading-relaxed">
+                <div class="max-w-2xl mx-auto text-lg leading-relaxed">
                     <p class="mb-4">
                         Actualmente me encuentro en <span class="font-semibold text-gray-900">Bogotá, Colombia</span>.
                     </p>
@@ -369,7 +428,7 @@
                 <div class="flex justify-center space-x-6 mt-4">
                     <a href="https://github.com/Maicfer" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-github text-2xl"></i></a>
                     <a href="https://www.linkedin.com/in/microdm" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin text-2xl"></i></a>
-                    </div>
+                </div>
             </div>
         </footer>
     </main>
