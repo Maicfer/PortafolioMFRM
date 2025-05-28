@@ -131,13 +131,13 @@
 
     <div id="overlay" class="overlay"></div>
 
-    <aside id="sidebar" class="sidebar fixed top-0 left-0 h-full z-50 overflow-hidden shadow-xl p-6 text-white flex flex-col">
+    <aside id="sidebar" class="sidebar fixed top-0 left-0 h-full z-50 shadow-xl p-6 text-white flex flex-col">
         <div class="flex justify-end mb-8">
             <button id="closeSidebar" class="text-blue-200 hover:text-blue-400 focus:outline-none text-3xl">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <nav class="sidebar-content flex-grow">
+        <nav class="sidebar-content opacity-0 transition-opacity duration-300 ease-in-out flex-grow">
             <ul class="space-y-6 text-xl font-semibold">
                 <li><a href="#inicio" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Inicio</a></li>
                 <li><a href="#sobre-mi" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Sobre Mí</a></li>
@@ -147,7 +147,7 @@
                 <li><a href="#ubicacion" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Ubicación</a></li> 
             </ul>
         </nav>
-        </aside>
+    </aside>
 
     <button id="openSidebar" class="fixed top-6 left-6 z-50 text-white bg-blue-600 p-3 rounded-full shadow-lg focus:outline-none hover:bg-blue-700 transition duration-300">
         <i class="fas fa-bars text-xl"></i>

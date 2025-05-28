@@ -51,29 +51,34 @@ input:focus, textarea:focus {
     transform: translateX(-100%); /* Desplazado fuera de la vista */
     visibility: hidden; /* Asegura que no sea interactivo cuando oculto */
     
-    /* Propiedades de diseño del sidebar (fusionadas de mis propuestas) */
+    /* Propiedades de diseño del sidebar */
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.99), rgba(17, 24, 39, 0.99)); /* Degradado oscuro y opacidad más alta */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidad */
     
     /* Transiciones para suavizar la apertura/cierre */
-    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    /* Modificamos el transition para que la visibilidad cambie al final del movimiento */
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s linear 0.3s; /* visibility: 0s linear 0.3s para que se oculte después de la transición de movimiento */
 }
 
 .sidebar.open {
     width: 200px; /* ANCHO REDUCIDO para desktop, más elegante */
     transform: translateX(0); /* Visible */
     visibility: visible;
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s linear 0s; /* visibility: 0s linear 0s para que se haga visible inmediatamente al abrir */
 }
 
-/* NUEVO: Estilos para el contenido interno del sidebar (navegación y 'X') */
+/* IMPORTANTE: Estilos para el contenido interno del sidebar (navegación y 'X') */
+/* Por defecto, el contenido del sidebar es completamente invisible */
 .sidebar-content {
-    opacity: 0; /* Oculto por defecto */
-    transition: opacity 0.3s ease-in-out 0.1s; /* Aparece después de que el sidebar se mueva */
+    opacity: 0; 
+    transition: opacity 0.2s ease-in-out; /* Transición para la opacidad */
 }
 
+/* Cuando el sidebar está abierto, el contenido se hace visible */
 .sidebar.open .sidebar-content {
     opacity: 1; /* Se hace visible cuando el sidebar está abierto */
+    transition-delay: 0.1s; /* Un pequeño retraso para que aparezca después del ancho */
 }
 
 @media (max-width: 768px) {

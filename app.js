@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
     const sidebarLinks = document.querySelectorAll('#sidebar a');
+    // Nuevo: Referencia al contenedor del contenido del sidebar
+    const sidebarContent = document.querySelector('.sidebar-content'); 
 
     // Lógica para el formulario de contacto
     if (contactForm) {
@@ -57,15 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.toggle('open');
         overlay.classList.toggle('active');
         document.body.classList.toggle('overflow-hidden'); // Evita el scroll del cuerpo cuando el sidebar está abierto
+        
+        // Controlamos la opacidad del contenido directamente con el JS
+        if (sidebar.classList.contains('open')) {
+            sidebarContent.style.opacity = '1';
+        } else {
+            // Un pequeño delay antes de ocultar completamente el contenido
+            // para que la transición de cerrado sea más suave.
+            setTimeout(() => {
+                sidebarContent.style.opacity = '0';
+            }, 200); // Ajusta este tiempo si es necesario
+        }
     };
 
     // Asegurarse de que el sidebar esté oculto al cargar la página
     // Esto es crucial para evitar que se vea antes de que el CSS/JS actúe
     // y para resetear el estado si el navegador lo guarda.
-    // Lo movemos aquí para que se ejecute una vez que el DOM esté listo.
     sidebar.classList.remove('open');
     overlay.classList.remove('active');
     document.body.classList.remove('overflow-hidden');
+    sidebarContent.style.opacity = '0'; // Aseguramos que el contenido esté oculto al cargar
 
 
     openSidebarBtn.addEventListener('click', toggleSidebar);
