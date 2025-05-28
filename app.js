@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
     const sidebarLinks = document.querySelectorAll('#sidebar a');
-    // Nuevo: Referencia al contenedor del contenido del sidebar
     const sidebarContent = document.querySelector('.sidebar-content'); 
 
     // Lógica para el formulario de contacto
@@ -62,10 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Controlamos la opacidad del contenido directamente con el JS
         if (sidebar.classList.contains('open')) {
+            // Cuando se abre, hacemos el contenido visible.
+            // Esto también incluye la 'X' que está dentro de sidebar-content.
             sidebarContent.style.opacity = '1';
         } else {
-            // Un pequeño delay antes de ocultar completamente el contenido
-            // para que la transición de cerrado sea más suave.
+            // Cuando se cierra, ocultamos el contenido después de un pequeño retraso
+            // para que se desvanezca mientras el sidebar se cierra.
             setTimeout(() => {
                 sidebarContent.style.opacity = '0';
             }, 200); // Ajusta este tiempo si es necesario
