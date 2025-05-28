@@ -41,7 +41,6 @@ input:focus, textarea:focus {
         text-shadow: 0 0 5px rgba(66, 153, 225, 0.4);
     }
 }
-
 .animate-pulse-text {
     animation: pulseText 2s infinite alternate;
 }
@@ -53,19 +52,33 @@ input:focus, textarea:focus {
     visibility: hidden; /* Asegura que no sea interactivo cuando oculto */
     
     /* Propiedades de diseño del sidebar (fusionadas de mis propuestas) */
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(17, 24, 39, 0.98)); /* Degradado oscuro y opacidad */
+    /* AUMENTAMOS LA OPACIDAD DEL DEGRADADO para mejor contraste */
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.99), rgba(17, 24, 39, 0.99)); /* Degradado oscuro y opacidad más alta */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidad */
     
     /* Transiciones para suavizar la apertura/cierre (fusionadas) */
-    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .sidebar.open {
     width: 200px; /* ANCHO REDUCIDO para desktop, más elegante */
     transform: translateX(0); /* Visible */
     visibility: visible;
+    opacity: 1; /* Asegura que el sidebar es completamente visible */
 }
+
+/* Transición para el contenido del sidebar (los enlaces) */
+.sidebar nav, .sidebar .flex-grow {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out 0.1s; /* Retraso para que aparezca después del ancho */
+}
+
+.sidebar.open nav, .sidebar.open .flex-grow {
+    opacity: 1;
+}
+
+
 @media (max-width: 768px) {
     .sidebar.open {
         width: 180px; /* ANCHO REDUCIDO para móviles */
@@ -100,7 +113,6 @@ input:focus, textarea:focus {
     box-shadow: 0 0 10px rgba(99, 179, 237, 0.5); /* Sutil brillo azul */
     background-color: rgba(66, 153, 225, 0.2); /* Fondo ligeramente azul */
 }
-
 
 /* --- ESTILOS DE SECCIONES Y COMPONENTES (ya en tu estilos.css) --- */
 
