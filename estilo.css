@@ -52,32 +52,29 @@ input:focus, textarea:focus {
     visibility: hidden; /* Asegura que no sea interactivo cuando oculto */
     
     /* Propiedades de diseño del sidebar (fusionadas de mis propuestas) */
-    /* AUMENTAMOS LA OPACIDAD DEL DEGRADADO para mejor contraste */
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.99), rgba(17, 24, 39, 0.99)); /* Degradado oscuro y opacidad más alta */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidad */
     
-    /* Transiciones para suavizar la apertura/cierre (fusionadas) */
-    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    /* Transiciones para suavizar la apertura/cierre */
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 .sidebar.open {
     width: 200px; /* ANCHO REDUCIDO para desktop, más elegante */
     transform: translateX(0); /* Visible */
     visibility: visible;
-    opacity: 1; /* Asegura que el sidebar es completamente visible */
 }
 
-/* Transición para el contenido del sidebar (los enlaces) */
-.sidebar nav, .sidebar .flex-grow {
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out 0.1s; /* Retraso para que aparezca después del ancho */
+/* NUEVO: Estilos para el contenido interno del sidebar (navegación y 'X') */
+.sidebar-content {
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.3s ease-in-out 0.1s; /* Aparece después de que el sidebar se mueva */
 }
 
-.sidebar.open nav, .sidebar.open .flex-grow {
-    opacity: 1;
+.sidebar.open .sidebar-content {
+    opacity: 1; /* Se hace visible cuando el sidebar está abierto */
 }
-
 
 @media (max-width: 768px) {
     .sidebar.open {
@@ -89,7 +86,6 @@ input:focus, textarea:focus {
 .sidebar nav ul li a {
     position: relative;
     overflow: hidden;
-    /* Asegúrate de que no haya padding vertical excesivo que corte la línea, p-2 py-2 es suficiente en HTML */
 }
 
 .sidebar nav ul li a::before {
