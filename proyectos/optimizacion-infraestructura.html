@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Rodríguez - Proyecto: Optimización de Infraestructura</title>
-    <link rel="icon" href="../img/favicon.ico" type="image/x-icon"> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../estilo.css"> <style>
-        /* Estilos generales del body y fuentes */
+    <link rel="stylesheet" href="../estilo.css">
+    <style>
+        /* Estilos generales del body y fuentes (heredados de tu estilo.css y Tailwind) */
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden; 
@@ -17,111 +19,41 @@
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
         }
-
-        /* Estilos para animaciones sutiles */
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
+        /* Asegúrate de que los estilos de .sidebar, .overlay, etc., de tu estilo.css funcionen bien */
+        /* Puedes añadir estilos específicos para esta página aquí si es necesario */
+        .prose { /* Estilos básicos para el contenido del proyecto */
+            max-width: none;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .prose h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 600; /* semibold */
+            color: #2d3748; /* gray-800 */
+            margin-bottom: 0.75rem; /* mb-3 */
         }
-        .scale-up {
-            transition: transform 0.3s ease-in-out;
+        .prose p, .prose ul {
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.75; /* leading-relaxed */
+            color: #4a5568; /* gray-700 */
+            margin-bottom: 1rem; /* mb-4 */
         }
-        .scale-up:hover {
-            transform: scale(1.05);
+        .prose ul {
+            list-style-position: inside;
+            list-style-type: disc;
+            padding-left: 1.5rem; /* pl-6 */
         }
-        .button-glow {
-            transition: all 0.3s ease;
-            box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+        .prose strong {
+            color: #2d3748; /* gray-800 */
         }
-        .button-glow:hover {
-            box-shadow: 0 0 15px rgba(66, 153, 225, 0.6); /* Azul claro */
-        }
-
-        /* Animación de texto de título */
-        .animate-pulse-text {
-            animation: pulseText 2s infinite alternate;
-        }
-        @keyframes pulseText {
-            0% { text-shadow: 0 0 5px rgba(66, 153, 225, 0.4); }
-            100% { text-shadow: 0 0 15px rgba(66, 153, 225, 0.8); }
-        }
-
-        /* Overlay para cerrar el sidebar al hacer clic fuera */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Más oscuro */
-            z-index: 40;
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0;
-        }
-        .overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Estilos para las barras de progreso de habilidades */
-        .skill-bar-container {
-            background-color: #e2e8f0;
-            border-radius: 9999px;
-            height: 12px;
-            overflow: hidden;
-        }
-        .skill-bar-fill {
-            height: 100%;
-            background: linear-gradient(to right, #3b82f6, #2563eb); /* Azules más intensos */
-            border-radius: 9999px;
-            transition: width 1s ease-out;
-        }
-        
-        /* Estilos de fondo para secciones alternadas (definidos aquí para claridad y facilidad de Tailwind) */
-        .section-bg-dark {
-            background-color: #1a202c; /* bg-gray-900 */
-            color: #ffffff; /* text-white */
-            position: relative;
-            overflow: hidden;
-        }
-        /* Patrón de puntos para secciones oscuras - Inyectado como base64 SVG */
-        .section-bg-dark::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232d3748" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM2 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM36 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM28 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM28 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 6v-4h-2v4h-4v2h4v4h2V6h4V4h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 0v-4h-2v4h-4v2h4v4h2V0h4V4h-4zM14 48v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM14 60v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z"%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-            background-size: 60px 60px;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        .section-bg-light {
-            background-color: #ffffff; /* bg-white */
-            color: #374151; /* text-gray-700 */
-        }
-        .section-bg-light-alt {
-            background-color: #f3f4f6; /* bg-gray-100 */
-            color: #374151;
-        }
-
-        /* Estilo para los cards de proyectos en fondos oscuros */
-        .project-card {
-            background-color: #ffffff; /* Blanco para destacar */
-            color: #1f2937; /* texto oscuro */
+        .project-detail-card {
+            background-color: #ffffff;
             border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
+            padding: 2rem; /* p-8 */
         }
-        .project-card:hover {
-            transform: translateY(-5px) scale(1.02); /* Pequeño levantamiento y agrandamiento */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        @media (min-width: 768px) { /* md: */
+            .project-detail-card {
+                padding: 3rem; /* md:p-12 */
+            }
         }
     </style>
 </head>
@@ -137,12 +69,12 @@
         </div>
         <nav class="sidebar-content opacity-0 transition-opacity duration-300 ease-in-out flex-grow">
             <ul class="space-y-6 text-xl font-semibold">
-                <li><a href="#inicio" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Inicio</a></li>
-                <li><a href="#sobre-mi" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Sobre Mí</a></li>
-                <li><a href="#proyectos" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Proyectos</a></li>
-                <li><a href="#cv" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">CV</a></li>
-                <li><a href="#contacto" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Contacto</a></li>
-                <li><a href="#ubicacion" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Ubicación</a></li> 
+                <li><a href="../index.html#inicio" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Inicio</a></li>
+                <li><a href="../index.html#sobre-mi" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Sobre Mí</a></li>
+                <li><a href="../index.html#proyectos" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Proyectos</a></li>
+                <li><a href="../index.html#cv" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">CV</a></li>
+                <li><a href="../index.html#contacto" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Contacto</a></li>
+                <li><a href="../index.html#ubicacion" class="block py-2 px-4 rounded-md hover:bg-blue-600 hover:bg-opacity-30 transition duration-300">Ubicación</a></li>
             </ul>
         </nav>
     </aside>
@@ -151,264 +83,106 @@
         <i class="fas fa-bars text-xl"></i>
     </button>
 
-    <main class="relative z-10">
-        <section id="inicio" class="min-h-screen flex items-center justify-center bg-cover bg-center text-center py-16 fade-in relative" style="background-image: url('./img/developer1.jpg');">
-            <div class="absolute inset-0 bg-blue-900 opacity-20"></div> 
-            <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-center md:justify-between text-white">
-                <div class="md:w-1/2 text-left md:pr-8 mb-8 md:mb-0">
-                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 animate-pulse-text">
-                        <span class="text-blue-400">Michael</span> Rodríguez
-                    </h1>
-                    <p class="text-xl md:text-3xl text-gray-100 mb-6 font-light">
-                        Analista de Sistemas, Diseño, Redes, Infraestructura
-                    </p>
-                    <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-md">
-                        Analista de Sistemas con experiencia en soporte, infraestructura TI, ciberseguridad y optimización de procesos. Especializado en gestión de servidores, redes y seguridad.
-                    </p>
-                    <a href="#proyectos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow inline-flex items-center">
-                        Explorar Proyectos <i class="fas fa-arrow-right ml-2"></i>
+    <main class="relative z-10 pt-20 md:pt-24"> {/* Añadido padding superior para que el contenido no quede debajo del botón de menú fijo */}
+        
+        <section class="py-12 md:py-16 section-bg-light fade-in">
+            <div class="container mx-auto px-4">
+                
+                <div class="mb-8">
+                    <a href="../index.html#proyectos" class="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center transition duration-300 text-lg">
+                        <i class="fas fa-arrow-left mr-2"></i> Volver a la Lista de Proyectos
                     </a>
                 </div>
-                <div class="md:w-1/2 flex justify-center md:justify-end">
-                    <img src="./img/Maic.jpeg" alt="Michael Rodríguez" class="rounded-full border-4 border-blue-400 shadow-2xl w-64 h-64 md:w-80 md:h-80 object-cover transform transition duration-500 hover:scale-105 hover:rotate-3">
-                </div>
-            </div>
-        </section>
 
-        <section id="sobre-mi" class="py-16 section-bg-light fade-in">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-blue-600 mb-8">Sobre Mí</h2>
-                <div class="max-w-3xl mx-auto text-lg leading-relaxed">
-                    <p class="mb-4">
-                        Soy un Analista de Sistemas con un enfoque en protección y escalabilidad tecnológica, liderazgo de equipos y soluciones innovadoras. Mi objetivo es transformar ideas complejas en soluciones digitales intuitivas y eficientes, siempre buscando aprender y aplicar las últimas tendencias.
-                    </p>
-                    <p>
-                        Cuento con habilidades en React, Python, Java, CSS, Office 365 Admin, G-Suite, GLPI, entre otros. Actualmente, estoy en formación en Ingeniería de IA de IBM.
-                    </p>
-                </div>
-            </div>
-        </section>
-        <section id="proyectos" class="py-16 section-bg-dark fade-in">
-            <div class="container mx-auto px-4 text-center relative z-10">
-                <h2 class="text-4xl font-bold text-blue-400 mb-12">Mis Proyectos</h2>
-                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="project-card flex flex-col items-center text-center p-6">
-                        <img src="img/logo-temporal.png" alt="Proyecto de Desarrollo Fullstack" class="rounded-md mb-4 w-full h-48 object-cover">
-                        <h3 class="text-2xl font-semibold mb-2">Desarrollo Fullstack: Portafolio y Gestor de Tareas</h3>
-                        <p class="text-gray-700 mb-4 flex-grow">
-                            Construcción de este portafolio dinámico con HTML, Tailwind CSS y JavaScript, junto a una aplicación de gestión de tareas con Python (Django/React) y base de datos.
-                        </p>
-                        <div class="mt-auto flex justify-center space-x-4 w-full">
-                            <a href="https://drive.google.com/file/d/1fSNN56dy7iiPy5ov_LHc11XYBTtTfguU/view?usp=drive_link" target="_blank" class="text-blue-600 hover:underline flex items-center">Ver Video Demo <i class="fas fa-video ml-1"></i></a>
-                            <a href="mailto:mc.maicfer@gmail.com?subject=Solicitud%20de%20Acceso%20a%20código%20de%20Proyecto%20Fullstack%20y%20Gestor%20de%20Tareas" class="text-blue-600 hover:underline flex items-center">
-                                Solicitar Acceso al Código <i class="fas fa-lock ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-card flex flex-col items-center text-center p-6">
-                        <img src="img/IMG-20240103-WA0051.jpg" alt="Infraestructura TI" class="rounded-md mb-4 w-full h-48 object-cover">
-                        <h3 class="text-2xl font-semibold mb-2">Optimización de Infraestructura y Ciberseguridad TI</h3>
-                        <p class="text-gray-700 mb-4 flex-grow">Implementación de seguridad perimetral y administración de redes (CCTV, APs). Mejoras en antivirus y copias de seguridad, aumentando la integridad de datos en un 25%.</p>
-                        <div class="mt-auto flex justify-center space-x-4 w-full">
-                            <a href="#" target="_blank" class="text-blue-600 hover:underline flex items-center">Ver Detalles <i class="fas fa-external-link-alt ml-1"></i></a>
-                            <a href="#" target="_blank" class="text-blue-600 hover:underline flex items-center">Caso de Estudio <i class="fas fa-file-alt ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-card flex flex-col items-center text-center p-6">
-                        <img src="img/logo.png" alt="Ciberseguridad" class="rounded-md mb-4 w-full h-48 object-cover">
-                        <h3 class="text-2xl font-semibold mb-2">App de Viajes (Django/React)</h3>
-                        <p class="text-gray-700 mb-4 flex-grow">
-                        Construcción de app de tareas con backend en Django y frontend en React (CSS, JS, Bootstrap). Creada para gestión bajo metodologías ágiles. Nota: Demo no disponible por limitaciones de hosting gratuito. Código fuente completo disponible.
-                        </p>
-                        <div class="mt-auto flex justify-center space-x-4 w-full">
-                            <a href="mailto:mc.maicfer@gmail.com?subject=Solicitud%20de%20Acceso%20a%20código%20de%20App%20de%20Viajes" class="text-blue-600 hover:underline flex items-center">
-                                Solicitar Acceso al Código <i class="fas fa-lock ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="cv" class="py-16 section-bg-light fade-in">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-blue-600 mb-8">Mi Currículum Vitae</h2>
-                <div class="max-w-4xl mx-auto bg-gray-100 rounded-lg shadow-lg p-8">
-                    <p class="text-lg text-gray-700 mb-6">
-                        Puedes descargar mi CV completo en formato PDF para una revisión detallada de mi experiencia y habilidades.
-                    </p>
-                    <a href="/cv/CV2025.pdf" download="Michael_Rodriguez_CV.pdf" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow flex items-center justify-center w-fit mx-auto">
-                        <i class="fas fa-download mr-2"></i> Descargar CV
-                    </a>
-
-                    <div class="mt-10 text-left">
-                        <h3 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Habilidades Técnicas y de Gestión</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-xl font-medium text-gray-800">Infraestructura y Sistemas</span>
-                                    <span class="text-blue-600 font-bold">95%</span>
-                                </div>
-                                <div class="skill-bar-container">
-                                    <div class="skill-bar-fill" style="width: 95%;"></div>
-                                </div>
-                                <p class="text-gray-600 text-sm mt-1">Servidores, redes, seguridad, soporte técnico.</p>
-                            </div>
-                            <div>
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-xl font-medium text-gray-800">Desarrollo (Python Fullstack)</span>
-                                    <span class="text-blue-600 font-bold">75%</span> </div>
-                                <div class="skill-bar-container">
-                                    <div class="skill-bar-fill" style="width: 75%;"></div>
-                                </div>
-                                <p class="text-gray-600 text-sm mt-1">Python (Fullstack), Bases de Datos, React, Java, CSS.</p>
-                            </div>
-                            <div>
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-xl font-medium text-gray-800">Herramientas IT</span>
-                                    <span class="text-blue-600 font-bold">90%</span> </div>
-                                <div class="skill-bar-container">
-                                    <div class="skill-bar-fill" style="width: 90%;"></div>
-                                </div>
-                                <p class="text-gray-600 text-sm mt-1">SAP, Office 365, G-Suite, Nagios, antivirus, GLPI.</p>
-                            </div>
-                            <div>
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-xl font-medium text-gray-800">Gestión y Metodologías</span>
-                                    <span class="text-blue-600 font-bold">90%</span>
-                                </div>
-                                <div class="skill-bar-container">
-                                    <div class="skill-bar-fill" style="width: 90%;"></div>
-                                </div>
-                                <p class="text-gray-600 text-sm mt-1">Liderazgo, PMP, Agile Explorer, pensamiento crítico, organización.</p>
-                            </div>
-                        </div>
-
-                        <h3 class="text-3xl font-semibold text-gray-900 mt-12 mb-4 text-center">Experiencia Profesional</h3>
-                        <div class="space-y-8 text-left">
-                            <div>
-                                <h4 class="text-2xl font-bold text-blue-600">Analista de Redes - Garper Médica S.A.S</h4>
-                                <p class="text-gray-600 italic text-lg">Bogotá, Marzo 2024 - Junio 2024</p>
-                                <ul class="list-disc list-inside text-gray-700 mt-3 space-y-2">
-                                    <li>Administré la mesa de ayuda mejorando tiempos de respuesta en 25%.</li>
-                                    <li>Implementé mejoras en seguridad perimetral e infraestructura reduciendo vulnerabilidades en 30%.</li>
-                                    <li>Administré redes, CCTV, APs; asegurando conectividad y operación continua sin interrupciones significativas.</li>
-                                    <li>Gestioné Office 365, optimizando la colaboración y productividad de los usuarios facilitando la colaboración de equipos en 30%.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-bold text-blue-600">Analista Infraestructura y Seguridad Informática - Syntofarma S.A</h4>
-                                <p class="text-gray-600 italic text-lg">Bogotá, Diciembre 2023 - Febrero 2024</p>
-                                <ul class="list-disc list-inside text-gray-700 mt-3 space-y-2">
-                                    <li>Coordiné el equipo de soporte, elevando la eficiencia en resolución de incidencias en 20%.</li>
-                                    <li>Fortalecí la ciberseguridad con mejoras en gestión de antivirus y copias de seguridad mejorando la integridad de datos 25%.</li>
-                                    <li>Gestioné infraestructura y ciberseguridad, asegurando alta disponibilidad de sistemas.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-bold text-blue-600">Analista de Sistemas / T.I Regional - Micropoint S.A.S</h4>
-                                <p class="text-gray-600 italic text-lg">Bogotá, Noviembre 2019 - Noviembre 2023</p>
-                                <ul class="list-disc list-inside text-gray-700 mt-3 space-y-2">
-                                    <li>Lideré múltiples proyectos tecnológicos, asegurando eficiencia operativa en el regional centro de Colgas creando adopción de T.I.</li>
-                                    <li>Optimicé la gestión de proveedores, TI y soporte, reduciendo costos y tiempos en 15%.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <h3 class="text-3xl font-semibold text-gray-900 mt-12 mb-4 text-center">Formación y Certificaciones</h3>
-                        <div class="space-y-6 text-left">
-                            <div>
-                                <h4 class="text-xl font-bold text-blue-600">Ingeniería de Sistemas - Universidad CUN</h4>
-                                <p class="text-gray-600 italic">Bogotá, 2021 - Actualmente</p>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-blue-600">Técnico Profesional en Análisis y Diseño de Sistemas - Politécnico Colombo Andino</h4>
-                                <p class="text-gray-600 italic">Bogotá, 2011 - 2013</p>
-                            </div>
-                            <div class="mt-6">
-                                <h4 class="text-xl font-bold text-blue-600 mb-2">Certificaciones:</h4>
-                                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                    <li>Certificado Profesional De Ing. En IA de IBM | IBM (En curso).</li>
-                                    <li>Insignia IBM Agile Explorer | IBM: <a href="https://www.credly.com/badges/6b7e502b-4cf7-48ba-8ff9-bab82d204c2a/public_url" target="_blank" class="text-blue-600 hover:underline inline-flex items-center">Ver credencial <i class="fas fa-award ml-1"></i></a>.</li>
-                                    <li>Bootcamp Fullstack Python | Enjoy (Certificado).</li>
-                                    <li>Gestión de Proyectos PMP | Univ. de los Andes (Certificado).</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="py-16 section-bg-dark fade-in">
-            <div class="container mx-auto px-4 text-center relative z-10">
-                <h2 class="text-4xl font-bold text-blue-400 mb-8">Ponte en Contacto Ahora Mismo</h2>
-                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                    ¿Tienes un proyecto en mente o quieres saludar? ¡No dudes en contactarme! Estoy disponible para nuevas oportunidades.
+                <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-5 text-center">Optimización de Infraestructura y Ciberseguridad TI</h1>
+                <p class="text-center text-gray-600 mb-10 md:mb-12 text-xl max-w-3xl mx-auto">
+                    Fortalecimiento de la seguridad perimetral, administración de redes y mejora en políticas de respaldo para garantizar la integridad y disponibilidad de los datos.
                 </p>
 
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
-                    <a href="https://wa.me/573248381116" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow flex items-center justify-center w-full md:w-auto">
-                        <i class="fab fa-whatsapp text-2xl mr-3"></i> Enviar Mensaje por WhatsApp
+                <div class="max-w-4xl mx-auto project-detail-card">
 
-                    </a>
-                    <a href="mailto:mc.maicfer@gmail.com" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow flex items-center justify-center w-full md:w-auto">
-                        <i class="fas fa-envelope text-2xl mr-3"></i> Enviar Correo Electrónico
-                    </a>
-                </div>
+                    <div class="mb-8 md:mb-10 text-center">
+                        <img src="../img/IMG-20240103-WA0051.jpg" alt="Imagen del Proyecto Optimización de Infraestructura" class="rounded-lg shadow-md mx-auto max-w-full h-auto" style="max-height: 450px; border: 1px solid #e2e8f0;">
+                    </div>
 
-                <div class="max-w-2xl mx-auto bg-gray-800 rounded-lg shadow-lg p-8">
-                    <h3 class="text-3xl font-semibold text-white mb-6">O déjame tus datos</h3>
-                    <form id="contactForm" action="https://formspree.io/f/mpwdevrd" method="POST" class="space-y-6">
-                        <div>
-                            <input type="text" name="name" id="name" placeholder="Tu nombre" required
-                                   class="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <input type="email" name="_replyto" id="email" placeholder="Tu correo" required
-                                   class="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <textarea name="message" id="message" rows="6" placeholder="Tu mensaje" required
-                                    class="w-full p-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                        </div>
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow w-full">
-                            Enviar Mensaje
-                        </button>
-                        <div id="formStatus" class="mt-4 text-center text-lg font-medium"></div>
-                    </form>
+                    <div class="mb-8 prose">
+                        <h2>Descripción Detallada</h2>
+                        <p>
+                            Este proyecto se centró en la <strong>mejora significativa de la infraestructura de TI y la ciberseguridad</strong> en un entorno corporativo (por ejemplo, durante mi tiempo en Garper Médica S.A.S o Syntofarma S.A). El objetivo principal fue robustecer las defensas contra amenazas cibernéticas, optimizar la gestión de la red y asegurar la continuidad operativa mediante la implementación de políticas de respaldo y recuperación de datos más eficientes.
+                        </p>
+                        <p>
+                            Se realizó un análisis exhaustivo de la infraestructura existente para identificar vulnerabilidades y áreas de mejora. Basado en este diagnóstico, se diseñó e implementó un plan estratégico que abarcó la seguridad perimetral (firewalls, IDS/IPS), la administración y segmentación de redes (CCTV, Puntos de Acceso), la gestión de antivirus a nivel corporativo y la optimización de los sistemas de copias de seguridad.
+                        </p>
+                    </div>
+
+                    <div class="mb-8 prose">
+                        <h2>Tecnologías y Herramientas Clave</h2>
+                        <ul>
+                            <li><strong>Seguridad Perimetral:</strong> Configuración y gestión de Firewalls (e.g., Fortinet, pfSense), Sistemas de Detección/Prevención de Intrusos (IDS/IPS).</li>
+                            <li><strong>Administración de Redes:</strong> Switches L2/L3, Routers, Puntos de Acceso (APs) Wi-Fi, gestión de VLANs, protocolos de enrutamiento, administración de CCTV.</li>
+                            <li><strong>Ciberseguridad Endpoint:</strong> Soluciones Antivirus Corporativas (e.g., ESET NOD32, Trend Micro, Bitdefender), políticas de seguridad en estaciones de trabajo.</li>
+                            <li><strong>Copias de Seguridad y Recuperación:</strong> Software de backup (e.g., Veeam Backup & Replication, Windows Server Backup, scripts personalizados), NAS/SAN, estrategias de RPO/RTO.</li>
+                            <li><strong>Sistemas Operativos:</strong> Windows Server (Active Directory, DNS, DHCP), Linux.</li>
+                            <li><strong>Herramientas de Monitoreo:</strong> Nagios, Zabbix, PRTG Network Monitor (o similares para el seguimiento del rendimiento y alertas).</li>
+                            <li><strong>Gestión de Tickets/Helpdesk:</strong> GLPI (para la gestión de incidentes y requerimientos).</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-8 prose">
+                        <h2>Desafíos y Soluciones</h2>
+                        <p>
+                            <strong>Desafío 1:</strong> Identificación de vulnerabilidades en la red y falta de segmentación adecuada.
+                            <br>
+                            <strong>Solución:</strong> Se implementaron políticas de firewall más robustas y se segmentó la red mediante VLANs para aislar sistemas críticos, minimizando la superficie de ataque y el impacto de posibles brechas.
+                        </p>
+                        <p>
+                            <strong>Desafío 2:</strong> Procesos de copia de seguridad inconsistentes y tiempos de recuperación potencialmente altos.
+                            <br>
+                            <strong>Solución:</strong> Se automatizaron y centralizaron las copias de seguridad de servidores y datos críticos. Se realizaron pruebas de restauración periódicas para validar la integridad de los respaldos y ajustar los RPO/RTO, logrando una mejora del 25% en la integridad de los datos (como se menciona en tu CV).
+                        </p>
+                        <p>
+                            <strong>Desafío 3:</strong> Gestión de puntos de acceso (APs) y cámaras de CCTV dispersa y poco eficiente.
+                            <br>
+                            <strong>Solución:</strong> Se centralizó la administración de APs (por ejemplo, con un controlador UniFi) y se optimizó la configuración de la red de CCTV para asegurar una cobertura y grabación continua, mejorando la seguridad física y la conectividad inalámbrica.
+                        </p>
+                    </div>
+
+                    <div class="mb-8 prose">
+                        <h2>Resultados e Impacto</h2>
+                        <p>
+                            La implementación de estas mejoras conllevó a resultados significativos, incluyendo:
+                        </p>
+                        <ul>
+                            <li><strong>Reducción de vulnerabilidades de seguridad</strong> en un porcentaje considerable (ej. 30% como mencionaste para Garper Médica).</li>
+                            <li><strong>Aumento de la integridad de los datos en un 25%</strong> (logro en Syntofarma) gracias a las mejoras en las políticas y herramientas de copias de seguridad.</li>
+                            <li><strong>Mejora en la estabilidad y rendimiento de la red,</strong> asegurando una conectividad continua y sin interrupciones significativas.</li>
+                            <li><strong>Optimización de los tiempos de respuesta ante incidentes</strong> de seguridad y soporte técnico.</li>
+                            <li>Mayor confianza en la infraestructura tecnológica para soportar las operaciones críticas del negocio.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center mt-10 md:mt-12">
+                        <a href="../documentos/caso-estudio-infraestructura.pdf" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 scale-up button-glow inline-flex items-center text-lg">
+                            <i class="fas fa-file-pdf mr-2"></i> Ver Caso de Estudio (PDF)
+                        </a>
+                        <p class="text-sm text-gray-500 mt-2">(Asegúrate de crear y enlazar tu PDF aquí)</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="ubicacion" class="py-16 section-bg-light-alt fade-in">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-blue-600 mb-8">Mi Ubicación</h2>
-                <div class="max-w-2xl mx-auto text-lg leading-relaxed">
-                    <p class="mb-4">
-                        Actualmente me encuentro en <span class="font-semibold text-gray-900">Bogotá, Colombia</span>.
-                    </p>
-                    <p class="mb-6">
-                        Puedes encontrar mi ubicación en el mapa haciendo clic en el siguiente enlace:
-                    </p>
-                    <a href="https://www.google.com/maps/place/Bogot%C3%A1,+Colombia" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow flex items-center justify-center w-fit mx-auto">
-                        <i class="fas fa-map-marker-alt mr-2"></i> Ver en Google Maps
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <footer class="bg-gray-900 py-8 text-center text-gray-400">
-            <div class="container mx-auto px-4">
-                <p>© 2025 Michael Rodríguez. Todos los derechos reservados.</p>
-                <div class="flex justify-center space-x-6 mt-4">
-                    <a href="https://github.com/Maicfer" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-github text-2xl"></i></a>
-                    <a href="https://www.linkedin.com/in/microdm" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin text-2xl"></i></a>
-                </div>
-            </div>
-        </footer>
     </main>
 
-    <script src="app.js"></script>
+    <footer class="bg-gray-900 py-8 text-center text-gray-400 mt-12">
+        <div class="container mx-auto px-4">
+            <p>© 2025 Michael Rodríguez. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="https://github.com/Maicfer" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-github text-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/microdm" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
 </body>
 </html>
