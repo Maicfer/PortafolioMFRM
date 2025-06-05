@@ -4,36 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Rodríguez - Proyecto: Optimización de Infraestructura TI</title>
-    <link rel="icon" href="../img/favicon.ico" type="image/x-icon"> <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../estilo.css"> <style>
-        /* Estilos específicos para esta página de detalle si fueran necesarios en el futuro */
-        /* Por ejemplo, para asegurar contraste en secciones oscuras si no está en estilo.css */
-        .section-bg-dark .project-detail-heading {
-            color: #90cdf4; /* text-blue-400 o similar para encabezados en fondo oscuro */
+    <link rel="stylesheet" href="../estilo.css">
+    <style>
+        /* Fuentes base definidas en estilo.css, aquí solo ajustes o overrides si son MUY específicos */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
         }
-        .section-bg-dark .project-detail-text {
-            color: #e2e8f0; /* text-gray-200 o similar para texto en fondo oscuro */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #374151; /* text-gray-700 por defecto para texto claro */
         }
-        .section-bg-dark .project-detail-list li::marker {
-            color: #90cdf4; /* Color para los puntos de la lista en fondos oscuros */
+
+        .project-hero {
+            background: linear-gradient(to right, #1e3a8a, #2563eb); /* Degradado azul oscuro a azul más brillante */
+            /* Si prefieres un section-bg-dark de tu CSS: background-color: #1a202c; */
         }
-        .section-bg-dark .project-detail-list strong {
-            color: #fff;
+
+        .project-hero h1 {
+            color: white;
+            font-weight: 800; /* Extra-bold para el título principal */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
-         .section-bg-light .project-detail-heading {
-            color: #3b82f6; /* text-blue-600 o similar para encabezados en fondo claro */
+        .project-hero p {
+            color: #d1d5db; /* text-gray-300 para el subtítulo en el hero */
+            font-weight: 400;
         }
-        .section-bg-light .project-detail-text {
-            color: #374151; /* text-gray-700 o similar para texto en fondo claro */
+        .project-hero a { /* Enlace "Volver a Proyectos" */
+            color: #e5e7eb; /* Un gris más claro para el enlace */
+            font-weight: 500;
         }
-        .section-bg-light .project-detail-list li::marker {
-            color: #3b82f6; /* Color para los puntos de la lista en fondos claros */
+         .project-hero a:hover {
+            color: white;
         }
+
+
+        /* Estilos para secciones claras */
+        .section-bg-light .section-title {
+            color: #2563eb; /* Azul principal para títulos en secciones claras */
+            font-weight: 700; /* Bold */
+        }
+        .section-bg-light .section-subtitle {
+            color: #1e3a8a; /* Azul más oscuro para subtítulos H3 */
+            font-weight: 600; /* Semibold */
+        }
+        .section-bg-light .section-text {
+            color: #374151; /* text-gray-700 */
+            line-height: 1.75;
+        }
+        .section-bg-light .section-list li::marker {
+            color: #2563eb;
+        }
+        .section-bg-light .section-list strong {
+            color: #1e40af; /* Un azul más oscuro para el strong */
+            font-weight: 600;
+        }
+
+        /* Estilos para secciones oscuras */
+        .section-bg-dark .section-title {
+            color: #60a5fa; /* Azul claro (Tailwind blue-400) para títulos en secciones oscuras */
+            font-weight: 700; /* Bold */
+        }
+        .section-bg-dark .section-subtitle {
+            color: #93c5fd; /* Azul más claro (Tailwind blue-300) para subtítulos H3 */
+            font-weight: 600; /* Semibold */
+        }
+        .section-bg-dark .section-text {
+            color: #d1d5db; /* text-gray-300 */
+            line-height: 1.75;
+        }
+         .section-bg-dark .section-list li::marker {
+            color: #60a5fa;
+        }
+        .section-bg-dark .section-list strong {
+            color: #e0e7ff; /* Un blanco azulado para el strong */
+            font-weight: 600;
+        }
+        .section-bg-dark .card-on-dark { /* Para las tarjetas dentro de secciones oscuras */
+            background-color: #1f2937; /* gray-800 */
+            border: 1px solid #374151; /* gray-700 */
+        }
+
     </style>
 </head>
-<body class="antialiased text-gray-900">
+<body class="antialiased">
 
     <div id="overlay" class="overlay"></div>
 
@@ -55,37 +112,40 @@
         </nav>
     </aside>
 
-    <button id="openSidebar" class="fixed top-6 left-6 z-50 text-white bg-blue-600 p-3 rounded-full shadow-lg focus:outline-none hover:bg-blue-700 transition duration-300">
+    <button id="openSidebar" class="fixed top-6 left-6 z-50 text-white bg-blue-700 p-3 rounded-full shadow-lg focus:outline-none hover:bg-blue-800 transition duration-300">
         <i class="fas fa-bars text-xl"></i>
     </button>
 
     <main class="relative z-10">
-        <section class="pt-24 pb-12 md:pt-28 md:pb-16 section-bg-light fade-in">
+        <section class="project-hero pt-24 pb-16 md:pt-32 md:pb-20 text-center fade-in">
             <div class="container mx-auto px-4">
-                <div class="mb-8 md:mb-10">
-                    <a href="../index.html#proyectos" class="text-blue-700 hover:text-blue-900 font-semibold hover:underline inline-flex items-center transition duration-300 text-lg">
+                <div class="mb-8">
+                    <a href="../index.html#proyectos" class="inline-flex items-center transition duration-300 text-lg hover:underline">
                         <i class="fas fa-arrow-left mr-2"></i> Volver a Proyectos
                     </a>
                 </div>
-                <div class="max-w-4xl mx-auto text-center mb-10 md:mb-12">
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4">
-                        Optimización de Infraestructura y Ciberseguridad TI
-                    </h1>
-                    <p class="text-xl text-gray-600 leading-relaxed">
-                        Fortalecimiento de la seguridad perimetral, administración de redes y mejora en políticas de respaldo para garantizar la integridad y disponibilidad de los datos.
-                    </p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl leading-tight mb-4">
+                    Optimización de Infraestructura y Ciberseguridad TI
+                </h1>
+                <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                    Fortalecimiento de la seguridad perimetral, administración de redes y mejora en políticas de respaldo para garantizar la integridad y disponibilidad de los datos.
+                </p>
                 </div>
-                <div class="max-w-3xl mx-auto bg-white p-3 rounded-lg shadow-xl border border-gray-200">
-                    <img src="../img/IMG-20240103-WA0051.jpg" alt="Representación del Proyecto Optimización de Infraestructura" class="rounded-md mx-auto max-w-full h-auto" style="max-height: 400px;">
+        </section>
+
+        <section class="py-12 md:py-16 section-bg-light fade-in">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto bg-white p-3 sm:p-4 rounded-xl shadow-2xl border border-gray-200">
+                    <img src="../img/IMG-20240103-WA0051.jpg" alt="Representación del Proyecto Optimización de Infraestructura" class="rounded-lg mx-auto max-w-full h-auto" style="max-height: 500px;">
                     </div>
             </div>
         </section>
 
         <section class="py-12 md:py-16 section-bg-dark fade-in">
             <div class="container mx-auto px-4">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold project-detail-heading mb-6 text-center">Descripción Detallada</h2>
-                    <div class="project-detail-text text-lg leading-relaxed space-y-4">
+                <div class="max-w-3xl mx-auto text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl section-title mb-6">Descripción Detallada</h2>
+                    <div class="section-text text-lg space-y-5">
                         <p>
                             Este proyecto se centró en la <strong>mejora significativa de la infraestructura de TI y la ciberseguridad</strong> en un entorno corporativo. El objetivo principal fue robustecer las defensas contra amenazas cibernéticas, optimizar la gestión de la red y asegurar la continuidad operativa mediante la implementación de políticas de respaldo y recuperación de datos más eficientes.
                         </p>
@@ -99,16 +159,16 @@
 
         <section class="py-12 md:py-16 section-bg-light fade-in">
             <div class="container mx-auto px-4">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold project-detail-heading mb-6 text-center">Tecnologías y Herramientas Clave</h2>
-                    <ul class="list-disc list-inside project-detail-text project-detail-list text-lg leading-relaxed space-y-3 pl-5">
-                        <li><strong>Seguridad Perimetral:</strong> Firewalls (e.g., Fortinet), IDS/IPS.</li>
-                        <li><strong>Administración de Redes:</strong> Switches L2/L3, Routers, APs Wi-Fi, VLANs, CCTV.</li>
-                        <li><strong>Ciberseguridad Endpoint:</strong> Antivirus Corporativos (e.g., ESET).</li>
-                        <li><strong>Copias de Seguridad:</strong> Veeam Backup, Windows Server Backup.</li>
-                        <li><strong>Sistemas Operativos:</strong> Windows Server, Linux.</li>
-                        <li><strong>Herramientas de Monitoreo:</strong> Nagios, Zabbix.</li>
-                        <li><strong>Gestión de Tickets:</strong> GLPI.</li>
+                <div class="max-w-3xl mx-auto text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl section-title mb-8">Tecnologías y Herramientas Clave</h2>
+                    <ul class="section-text section-list grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-lg pl-5 sm:pl-0">
+                        <li class="flex items-start"><i class="fas fa-shield-alt text-blue-500 mt-1 mr-3"></i><div><strong>Seguridad Perimetral:</strong> Firewalls (e.g., Fortinet), IDS/IPS.</div></li>
+                        <li class="flex items-start"><i class="fas fa-network-wired text-blue-500 mt-1 mr-3"></i><div><strong>Admin. de Redes:</strong> Switches, Routers, APs, VLANs, CCTV.</div></li>
+                        <li class="flex items-start"><i class="fas fa-laptop-code text-blue-500 mt-1 mr-3"></i><div><strong>Ciberseguridad Endpoint:</strong> Antivirus Corp. (e.g., ESET).</div></li>
+                        <li class="flex items-start"><i class="fas fa-database text-blue-500 mt-1 mr-3"></i><div><strong>Copias de Seguridad:</strong> Veeam Backup, Win Server Backup.</div></li>
+                        <li class="flex items-start"><i class="fab fa-windows text-blue-500 mt-1 mr-3"></i><div><strong>Sistemas Operativos:</strong> Windows Server, Linux.</div></li>
+                        <li class="flex items-start"><i class="fas fa-chart-line text-blue-500 mt-1 mr-3"></i><div><strong>Monitoreo:</strong> Nagios, Zabbix.</div></li>
+                        <li class="flex items-start"><i class="fas fa-headset text-blue-500 mt-1 mr-3"></i><div><strong>Gestión de Tickets:</strong> GLPI.</div></li>
                     </ul>
                 </div>
             </div>
@@ -116,22 +176,23 @@
 
         <section class="py-12 md:py-16 section-bg-dark fade-in">
             <div class="container mx-auto px-4">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold project-detail-heading mb-8 text-center">Desafíos y Soluciones</h2>
+                <div class="max-w-3xl mx-auto text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl section-title mb-8">Desafíos y Soluciones</h2>
                     <div class="space-y-8">
-                        <div class="p-6 bg-gray-800 rounded-lg shadow-md"> <h3 class="text-xl font-semibold text-blue-300 mb-2">Vulnerabilidades y Segmentación de Red</h3>
-                            <p class="project-detail-text text-lg leading-relaxed"><strong>Desafío:</strong> Falta de segmentación adecuada y exposición a vulnerabilidades.</p>
-                            <p class="project-detail-text text-lg leading-relaxed mt-1"><strong>Solución:</strong> Implementación de políticas de firewall robustas y segmentación de red con VLANs para aislar sistemas críticos.</p>
+                        <div class="p-6 rounded-lg shadow-xl card-on-dark">
+                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Vulnerabilidades y Segmentación</h3>
+                            <p class="section-text text-lg"><strong>Desafío:</strong> Falta de segmentación adecuada y exposición a vulnerabilidades.</p>
+                            <p class="section-text text-lg mt-1"><strong>Solución:</strong> Implementación de políticas de firewall robustas y segmentación de red con VLANs.</p>
                         </div>
-                        <div class="p-6 bg-gray-800 rounded-lg shadow-md">
-                            <h3 class="text-xl font-semibold text-blue-300 mb-2">Continuidad del Negocio</h3>
-                            <p class="project-detail-text text-lg leading-relaxed"><strong>Desafío:</strong> Procesos de copia de seguridad inconsistentes y altos tiempos de recuperación.</p>
-                            <p class="project-detail-text text-lg leading-relaxed mt-1"><strong>Solución:</strong> Automatización y centralización de copias de seguridad, con pruebas de restauración periódicas, mejorando RPO/RTO y la integridad de datos en un 25%.</p>
+                        <div class="p-6 rounded-lg shadow-xl card-on-dark">
+                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-business-time mr-2"></i>Continuidad del Negocio</h3>
+                            <p class="section-text text-lg"><strong>Desafío:</strong> Procesos de copia de seguridad inconsistentes y altos RTO/RPO.</p>
+                            <p class="section-text text-lg mt-1"><strong>Solución:</strong> Automatización y centralización de backups, pruebas de restauración, mejorando integridad de datos en 25%.</p>
                         </div>
-                        <div class="p-6 bg-gray-800 rounded-lg shadow-md">
-                            <h3 class="text-xl font-semibold text-blue-300 mb-2">Gestión de Dispositivos de Red</h3>
-                            <p class="project-detail-text text-lg leading-relaxed"><strong>Desafío:</strong> Administración dispersa de APs y CCTV.</p>
-                            <p class="project-detail-text text-lg leading-relaxed mt-1"><strong>Solución:</strong> Centralización de la administración de APs y optimización de la red CCTV para cobertura y grabación continua.</p>
+                        <div class="p-6 rounded-lg shadow-xl card-on-dark">
+                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-broadcast-tower mr-2"></i>Gestión de Dispositivos</h3>
+                            <p class="section-text text-lg"><strong>Desafío:</strong> Administración dispersa de APs y CCTV.</p>
+                            <p class="section-text text-lg mt-1"><strong>Solución:</strong> Centralización de la administración de APs y optimización de la red CCTV.</p>
                         </div>
                     </div>
                 </div>
@@ -140,18 +201,18 @@
 
         <section class="py-12 md:py-16 section-bg-light fade-in">
             <div class="container mx-auto px-4">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold project-detail-heading mb-6 text-center">Resultados e Impacto</h2>
-                    <div class="project-detail-text text-lg leading-relaxed space-y-4">
+                <div class="max-w-3xl mx-auto text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl section-title mb-8">Resultados e Impacto Positivo</h2>
+                    <div class="section-text text-lg space-y-4">
                         <p>
-                            La implementación de estas mejoras conllevó a resultados significativos:
+                            La implementación de estas mejoras conllevó a resultados tangibles y significativos:
                         </p>
-                        <ul class="list-disc list-inside project-detail-list space-y-2 pl-5">
-                            <li>Reducción de vulnerabilidades de seguridad en un 30%.</li>
-                            <li>Aumento de la integridad de los datos en un 25%.</li>
-                            <li>Mejora en la estabilidad y rendimiento de la red.</li>
-                            <li>Optimización de los tiempos de respuesta ante incidentes.</li>
-                            <li>Mayor confianza en la infraestructura tecnológica.</li>
+                        <ul class="section-list space-y-3 pl-5">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Reducción de vulnerabilidades de seguridad en un <strong>30%</strong>.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Aumento de la integridad de los datos en un <strong>25%</strong>.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Mejora notable en la estabilidad y rendimiento de la red.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Optimización de los tiempos de respuesta ante incidentes.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Mayor confianza general en la infraestructura tecnológica.</div></li>
                         </ul>
                     </div>
                 </div>
@@ -160,20 +221,20 @@
 
         <section class="py-16 md:py-20 section-bg-dark fade-in">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold project-detail-heading mb-6">Ver Más Detalles</h2>
-                <p class="project-detail-text text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-                    Para un análisis más profundo de este proyecto, incluyendo diagramas y métricas específicas, puedes consultar el caso de estudio completo.
+                <h2 class="text-3xl md:text-4xl section-title mb-6">Profundiza en el Proyecto</h2>
+                <p class="section-text text-lg mb-8 max-w-xl mx-auto">
+                    Para un análisis más exhaustivo, incluyendo diagramas técnicos y métricas detalladas, te invito a consultar el caso de estudio completo.
                 </p>
-                <a href="../documentos/caso-estudio-infraestructura.pdf" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow inline-flex items-center text-lg">
+                <a href="../documentos/caso-estudio-infraestructura.pdf" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 scale-up button-glow inline-flex items-center text-lg shadow-lg">
                     <i class="fas fa-file-alt mr-2"></i> Descargar Caso de Estudio (PDF)
                 </a>
-                </div>
+            </div>
         </section>
     </main>
 
     <footer class="bg-gray-900 py-8 text-center text-gray-400">
         <div class="container mx-auto px-4">
-            <p>© 2025 Michael Rodríguez. Todos los derechos reservados.</p>
+            <p class="text-sm">© 2025 Michael Rodríguez. Todos los derechos reservados.</p>
             <div class="flex justify-center space-x-6 mt-4">
                 <a href="https://github.com/Maicfer" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-github text-2xl"></i></a>
                 <a href="https://www.linkedin.com/in/microdm" target="_blank" class="hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin text-2xl"></i></a>
@@ -181,5 +242,6 @@
         </div>
     </footer>
 
-    <script src="../app.js"></script> </body>
+    <script src="../app.js"></script>
+</body>
 </html>
