@@ -8,6 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
     <link rel="stylesheet" href="../estilo.css">
     <style>
         /* Fuentes base definidas en estilo.css, aquí solo ajustes o overrides si son MUY específicos */
@@ -21,9 +24,7 @@
 
         .project-hero {
             background: linear-gradient(to right, #1e3a8a, #2563eb); /* Degradado azul oscuro a azul más brillante */
-            /* Si prefieres un section-bg-dark de tu CSS: background-color: #1a202c; */
         }
-
         .project-hero h1 {
             color: white;
             font-weight: 800; /* Extra-bold para el título principal */
@@ -40,7 +41,6 @@
          .project-hero a:hover {
             color: white;
         }
-
 
         /* Estilos para secciones claras */
         .section-bg-light .section-title {
@@ -88,6 +88,21 @@
             border: 1px solid #374151; /* gray-700 */
         }
 
+        /* Estilos adicionales para las miniaturas de la galería */
+        .gallery-thumbnail {
+            border: 3px solid white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            aspect-ratio: 4 / 3; /* Proporción 4:3 para las miniaturas, ajusta si es necesario */
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+        }
+        .gallery-thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -130,14 +145,47 @@
                 <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
                     Fortalecimiento de la seguridad perimetral, administración de redes y mejora en políticas de respaldo para garantizar la integridad y disponibilidad de los datos.
                 </p>
-                </div>
+            </div>
         </section>
 
         <section class="py-12 md:py-16 section-bg-light fade-in">
             <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto bg-white p-3 sm:p-4 rounded-xl shadow-2xl border border-gray-200">
-                    <img src="../img/IMG-20240103-WA0051.jpg" alt="Representación del Proyecto Optimización de Infraestructura" class="rounded-lg mx-auto max-w-full h-auto" style="max-height: 500px;">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-2xl md:text-3xl section-title mb-8">Galería Visual del Proyecto</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                        
+                        <div class="gallery-item">
+                            <a href="../img/IMG-20240103-WA0051.jpg" class="glightbox"
+                               data-gallery="proyectoInfra"
+                               data-title="Dashboard de Gestión Fortinet"
+                               data-description="Monitorización en tiempo real del estado de la seguridad y uso del sistema.">
+                                <img src="../img/proyectos/thumbnails/IMG-20240103-WA0051_thumb.jpg" alt="Miniatura Dashboard de Gestión"
+                                     class="gallery-thumbnail">
+                            </a>
+                        </div>
+
+                        <div class="gallery-item">
+                            <a href="../img/proyectos/infra-gallery-02-full.jpg" class="glightbox"
+                               data-gallery="proyectoInfra"
+                               data-title="Diagrama de Red Implementado"
+                               data-description="Esquema visual de la arquitectura de red y sus componentes principales.">
+                                <img src="../img/proyectos/thumbnails/infra-gallery-02_thumb.jpg" alt="Miniatura Diagrama de Red"
+                                     class="gallery-thumbnail">
+                            </a>
+                        </div>
+
+                        <div class="gallery-item">
+                            <a href="../img/proyectos/infra-gallery-03-full.jpg" class="glightbox"
+                               data-gallery="proyectoInfra"
+                               data-title="Ejemplo Configuración de Seguridad"
+                               data-description="Detalle de una política de seguridad clave o configuración de firewall.">
+                                <img src="../img/proyectos/thumbnails/infra-gallery-03_thumb.jpg" alt="Miniatura Configuración de Seguridad"
+                                     class="gallery-thumbnail">
+                            </a>
+                        </div>
                     </div>
+                     <p class="text-sm text-gray-500 mt-6">Haz clic en cualquier imagen para ampliarla y ver detalles.</p>
+                </div>
             </div>
         </section>
 
@@ -162,13 +210,13 @@
                 <div class="max-w-3xl mx-auto text-center md:text-left">
                     <h2 class="text-3xl md:text-4xl section-title mb-8">Tecnologías y Herramientas Clave</h2>
                     <ul class="section-text section-list grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-lg pl-5 sm:pl-0">
-                        <li class="flex items-start"><i class="fas fa-shield-alt text-blue-500 mt-1 mr-3"></i><div><strong>Seguridad Perimetral:</strong> Firewalls (e.g., Fortinet), IDS/IPS.</div></li>
-                        <li class="flex items-start"><i class="fas fa-network-wired text-blue-500 mt-1 mr-3"></i><div><strong>Admin. de Redes:</strong> Switches, Routers, APs, VLANs, CCTV.</div></li>
-                        <li class="flex items-start"><i class="fas fa-laptop-code text-blue-500 mt-1 mr-3"></i><div><strong>Ciberseguridad Endpoint:</strong> Antivirus Corp. (e.g., ESET).</div></li>
-                        <li class="flex items-start"><i class="fas fa-database text-blue-500 mt-1 mr-3"></i><div><strong>Copias de Seguridad:</strong> Veeam Backup, Win Server Backup.</div></li>
-                        <li class="flex items-start"><i class="fab fa-windows text-blue-500 mt-1 mr-3"></i><div><strong>Sistemas Operativos:</strong> Windows Server, Linux.</div></li>
-                        <li class="flex items-start"><i class="fas fa-chart-line text-blue-500 mt-1 mr-3"></i><div><strong>Monitoreo:</strong> Nagios, Zabbix.</div></li>
-                        <li class="flex items-start"><i class="fas fa-headset text-blue-500 mt-1 mr-3"></i><div><strong>Gestión de Tickets:</strong> GLPI.</div></li>
+                        <li class="flex items-start"><i class="fas fa-shield-alt text-blue-500 mt-1 mr-3 text-xl"></i><div><strong>Seguridad Perimetral:</strong> Firewalls (e.g., Fortinet), IDS/IPS.</div></li>
+                        <li class="flex items-start"><i class="fas fa-network-wired text-blue-500 mt-1 mr-3 text-xl"></i><div><strong>Admin. de Redes:</strong> Switches, Routers, APs, VLANs, CCTV.</div></li>
+                        <li class="flex items-start"><i class="fas fa-laptop-code text-blue-500 mt-1 mr-3 text-xl"></i><div><strong>Ciberseguridad Endpoint:</strong> Antivirus Corp. (e.g., ESET).</div></li>
+                        <li class="flex items-start"><i class="fas fa-database text-blue-500 mt-1 mr-3 text-xl"></i><div><strong>Copias de Seguridad:</strong> Veeam Backup, Win Server Backup.</div></li>
+                        <li class="flex items-start"><i class="fab fa-windows text-blue-500 mt-1 mr-3 text-xl"></i><div><strong>Sistemas Operativos:</strong> Windows Server, Linux.</div></li>
+                        <li class="flex items-start"><i class="fas fa-chart-line text-blue-500 mt-1 mr-3 text-xl"></i><div><strong>Monitoreo:</strong> Nagios, Zabbix.</div></li>
+                        <li class="flex items-start"><i class="fas fa-headset text-blue-500 mt-1 mr-3 text-xl"></i><div><strong>Gestión de Tickets:</strong> GLPI.</div></li>
                     </ul>
                 </div>
             </div>
@@ -180,17 +228,17 @@
                     <h2 class="text-3xl md:text-4xl section-title mb-8">Desafíos y Soluciones</h2>
                     <div class="space-y-8">
                         <div class="p-6 rounded-lg shadow-xl card-on-dark">
-                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Vulnerabilidades y Segmentación</h3>
+                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-exclamation-triangle mr-2 text-yellow-400"></i>Vulnerabilidades y Segmentación</h3>
                             <p class="section-text text-lg"><strong>Desafío:</strong> Falta de segmentación adecuada y exposición a vulnerabilidades.</p>
                             <p class="section-text text-lg mt-1"><strong>Solución:</strong> Implementación de políticas de firewall robustas y segmentación de red con VLANs.</p>
                         </div>
                         <div class="p-6 rounded-lg shadow-xl card-on-dark">
-                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-business-time mr-2"></i>Continuidad del Negocio</h3>
+                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-business-time mr-2 text-yellow-400"></i>Continuidad del Negocio</h3>
                             <p class="section-text text-lg"><strong>Desafío:</strong> Procesos de copia de seguridad inconsistentes y altos RTO/RPO.</p>
                             <p class="section-text text-lg mt-1"><strong>Solución:</strong> Automatización y centralización de backups, pruebas de restauración, mejorando integridad de datos en 25%.</p>
                         </div>
                         <div class="p-6 rounded-lg shadow-xl card-on-dark">
-                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-broadcast-tower mr-2"></i>Gestión de Dispositivos</h3>
+                            <h3 class="text-xl section-subtitle mb-2"><i class="fas fa-broadcast-tower mr-2 text-yellow-400"></i>Gestión de Dispositivos</h3>
                             <p class="section-text text-lg"><strong>Desafío:</strong> Administración dispersa de APs y CCTV.</p>
                             <p class="section-text text-lg mt-1"><strong>Solución:</strong> Centralización de la administración de APs y optimización de la red CCTV.</p>
                         </div>
@@ -207,12 +255,11 @@
                         <p>
                             La implementación de estas mejoras conllevó a resultados tangibles y significativos:
                         </p>
-                        <ul class="section-list space-y-3 pl-5">
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Reducción de vulnerabilidades de seguridad en un <strong>30%</strong>.</div></li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Aumento de la integridad de los datos en un <strong>25%</strong>.</div></li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Mejora notable en la estabilidad y rendimiento de la red.</div></li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Optimización de los tiempos de respuesta ante incidentes.</div></li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><div>Mayor confianza general en la infraestructura tecnológica.</div></li>
+                        <ul class="section-list space-y-3 pl-0"> <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3 text-xl"></i><div>Reducción de vulnerabilidades de seguridad en un <strong>30%</strong>.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3 text-xl"></i><div>Aumento de la integridad de los datos en un <strong>25%</strong>.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3 text-xl"></i><div>Mejora notable en la estabilidad y rendimiento de la red.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3 text-xl"></i><div>Optimización de los tiempos de respuesta ante incidentes.</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3 text-xl"></i><div>Mayor confianza general en la infraestructura tecnológica.</div></li>
                         </ul>
                     </div>
                 </div>
@@ -243,5 +290,16 @@
     </footer>
 
     <script src="../app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script type="text/javascript">
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: false,
+            autoplayVideos: true,
+            zoomable: true,
+            selector: '.glightbox' // Busca enlaces con la clase 'glightbox'
+        });
+    </script>
 </body>
 </html>
